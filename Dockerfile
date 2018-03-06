@@ -1,6 +1,6 @@
 # selenium base image, autobuilt by docker hub so we can be a little lazy
 # when we build sel_ff_chrome
-FROM fedora:23
+FROM fedora:27
 MAINTAINER "CFME QE <cloudforms-qe@redhat.com>"
 # Bring in all the dependencies; we could probably do this with deplist and bash
 # shenanigans, but the manual method does the job well enough
@@ -11,7 +11,7 @@ RUN dnf -y update && \
     net-tools dbus-glib dbus-x11 gtk2 java-1.8.0-openjdk-headless flash-plugin nspluginwrapper \
     alsa-plugins-pulseaudio libcurl unzip xdg-utils redhat-lsb GConf2 \
     libXScrnSaver xorg-x11-fonts-ISO8859-1-75dpi xorg-x11-fonts-ISO8859-1-100dpi \
-    dejavu* openssh-server nginx supervisor python-gunicorn python-flask libexif && \
+    dejavu* openssh-server nginx supervisor python-gunicorn python-flask libexif gtk3 && \
     dnf clean all
 RUN mkdir -p /.mozilla/plugins && \
     ln -s /usr/lib64/flash-plugin/libflashplayer.so /.mozilla/plugins/libflashplayer.so && \
